@@ -24,6 +24,11 @@ pipeline {
                 }
             }
         }
+        stage('input') {
+            steps {
+                input message: 'Do you want to deploy?', ok: 'Deploy'
+            }
+        }
         stage('Archive') {
             steps {
                 archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
